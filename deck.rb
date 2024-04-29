@@ -57,7 +57,12 @@ class Deck
     { value: 'A♣', points: 11, flexible_points: true }
   ].freeze
 
-  def generate_deck
-    CARDS.shuffle
+  def initialize
+    @deck = CARDS.shuffle
+  end
+
+  def take_card
+    card =  @deck[rand(0..@deck.length - 1)]
+    @deck.delete(card)
   end
 end

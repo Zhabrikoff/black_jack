@@ -37,15 +37,15 @@ class BlackJack
     @user.clear_hand
     @dealer.clear_hand
 
-    @deck = Deck.new.generate_deck
+    @deck = Deck.new
 
     @bank += 10
     @user.money -= 10
     @dealer.money -= 10
 
     2.times do
-      @user.get_card(take_card)
-      @dealer.get_card(take_card)
+      @user.get_card(@deck.take_card)
+      @dealer.get_card(@deck.take_card)
     end
 
     show_money
@@ -60,19 +60,14 @@ class BlackJack
   end
 
   def user_move
-    @user.get_card(take_card)
+    @user.get_card(@deck.take_card)
     dealer_move
   end
 
   def dealer_move
-    @dealer.get_card(take_card) if @dealer.points < 17
+    @dealer.get_card(@deck.take_card) if @dealer.points < 17
 
     end_game
-  end
-
-  def take_card
-    card = @deck[rand(0..deck.length - 1)]
-    @deck.delete(card)
   end
 
   def end_game
