@@ -1,7 +1,5 @@
 require_relative 'deck'
 require_relative 'player'
-require_relative 'user'
-require_relative 'dealer'
 
 require_relative 'helpers/menu'
 require_relative 'helpers/helpers'
@@ -18,8 +16,8 @@ class BlackJack
 
     puts 'Enter your name:'
     name = take_answer
-    @user = User.new(name)
-    @dealer = Dealer.new
+    @user = Player.new(name)
+    @dealer = Player.new
 
     show_menu(MAIN_MENU)
   end
