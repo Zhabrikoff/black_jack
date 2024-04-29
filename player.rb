@@ -14,9 +14,9 @@ class Player
 
   def cards(hide_dealer_cards = false)
     if hide_dealer_cards
-      ('*, ' * @hand.length).strip
+      ('* ' * @hand.length).strip
     else
-      hand.reduce([]) { |cards, card| cards << card[:value] }.join(', ')
+      hand.reduce([]) { |cards, card| cards << card[:value] }.join(' ')
     end
   end
 
